@@ -1,0 +1,35 @@
+TITLE feff_xanes
+
+EDGE      K
+S02       1.0
+
+*         pot    xsph  fms   paths genfmt ff2chi
+CONTROL   1      1     0     0     0      0
+PRINT     1      0     0     0     0      3
+
+*         ixc  [ Vr  Vi ]     *** ixc=0 means to use Hedin-Lundqvist
+EXCHANGE  0 0 {{Vi}} 2
+                                          *** Radius for self-consistent pots (2 shells is a good choice)
+*         r_scf  [ l_scf   n_scf   ca ]   *** l_scf = 0 for a solid, 1 for a molecule
+* SCF       5.4 0 100 0.2 10
+SCF       {{r_scf}} 0 100 0.2 10
+COREHOLE RPA
+
+*         r_fms     l_fms      *** Radius for Full Mult. Scatt. l_fms = 0 for a solid, 1 for a molecule
+* FMS       5.83  0
+FMS       {{r_fms}}  0
+
+*         emin  emax   eimag   *** Energy grid over which to calculate DOS functions -> doesn't influence the XANES result
+LDOS      -35   20     0.1
+
+
+*         kmax   [ delta_k  delta_e ]     *** Upper limit of XANES calculation.
+XANES     5.0   0.07    0.02
+              *** for EXAFS: RPATH 5.0 and uncomment the EXAFS card
+*RPATH     5.0
+*EXAFS     21
+* POLARIZATION  0   0   0
+
+EGRID 
+e_grid -10 200 1
+

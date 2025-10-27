@@ -1,0 +1,49 @@
+! Fdmnes indata file
+! Calculation for the copper K-edge in copper cfc
+! Finite difference method calculation with convolution
+
+ Filout
+   fdmx_out
+
+ fdmx
+ fdmx_proc
+
+ E_cut
+ {{e_cut}}
+ 
+ Radius                       ! Radius of the cluster depending on energy
+  8.3 100. 7. 250. 5. 400. 4. ! Val, En, Val  
+
+ adimp
+ 0.24 0. 100. 0.20 250. 0.16 400. 0.12 500. 0.08
+
+ Tmeas
+ 298
+
+ Energpho
+
+ Range                        ! Energy range of calculation (eV)
+ -1 0.5  20. 1. 50. 2 300  ! first energy, step, intermediary energy, step ..., last energy    
+
+ Green
+ SCF
+ R_self
+ {{r_self}}
+
+! P_self
+! {{p_self}}
+
+ Delta_E_conv
+ {{delta_e_conv}}
+
+! Hubbard_z
+! 29 {{hubbard_z}}
+ 
+ ! Xalpha
+ ! {{xalpha}}
+
+ ! Perdew, PBE96
+
+ Eimag
+ {{eimag}}
+

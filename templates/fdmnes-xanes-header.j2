@@ -1,0 +1,34 @@
+! Fdmnes indata file
+! Calculation for the copper K-edge in copper cfc
+! Finite difference method calculation with convolution
+
+ Filout
+  fdmnes_out 
+
+ Energpho
+
+ Range                        ! Energy range of calculation (eV)
+ -10. 1. -1 0.2  5. 0.5 20. 1. 50.  ! first energy, step, intermediary energy, step ..., last energy    
+
+ Radius                       ! Radius of the cluster where final state calculation is performed
+   {{radius}}                        ! For a good calculation, this radius must be increased up to 6 or 7 Angstroems
+
+ Green
+ SCF
+ R_self
+ {{r_self}}
+ !P_self
+ !{{p_self}}
+ Delta_E_conv
+ {{delta_e_conv}}
+ !Hubbard_z
+ !29 {{hubbard_z}}
+ 
+ ! Xalpha
+ ! {{xalpha}}
+
+ ! Perdew, PBE96
+
+ Eimag
+ {{eimag}}
+

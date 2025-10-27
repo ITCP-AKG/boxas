@@ -1,0 +1,128 @@
+dir:
+  run_dir: 'runs'
+  notebooks_dir: './notebooks'
+  data_dir: './data'
+  template_dir: './templates'
+
+exec:
+  feff: "/full/path/to/feff/feff10-10.0.0-mpi/bin/feffmpi"
+  fdmnes: "/full/path/to/fdmnes/fdmnes_Linux/fdmnes_linux64"
+
+feff_params:
+  s02:
+    type: float
+    bounds: [0.2, 1.0]
+  Vr:
+    type: float
+    bounds: [-5., 5.]
+  Vi:
+    type: float
+    bounds: [0., 3.]
+  r_scf:
+    type: float
+    bounds: [4., 5.] # should be [6., 7.5] for reasonable results
+  r_fms:
+    type: float
+    bounds: [4., 5.] # should be [6., 8.5]
+  rpath:
+    type: float
+    bounds: [4.1, 7.]
+
+fdmnes_params:
+  radius:
+    type: float
+    bounds: [6., 8.5]
+  r_self:
+    type: float
+    bounds: [6., 7.5]
+  delta_e_conv:
+    type: float
+    bounds: [-3., 3.]
+  eimag:
+    type: float
+    bounds: [0., 3.]
+  e_cut:
+    type: float
+    bounds: [-3., 0.]
+  
+exp_data:
+  Ni_aps: 
+    label: "Ni APS"
+    compounds: 
+      Ni_foil:
+        elements: ["Ni"]
+        structure: "fcc"
+        lattice_const: 3.524
+    data:
+      source_file: "../data/Ni_metal_rt_01.xdi"
+      energy_column: "energy eV"
+      mu_expression: "-log(itrans/i0)"
+      mu_ref_expression: "-log(itrans/i0)"
+
+    normalization:
+      pre1: -150
+      pre2: -40
+      norm1: 290
+      norm2: 700
+      nnorm: 2
+      nvict: 0
+      flatten: true
+
+    energy:
+      edge: 8333
+      min: 8327
+      max: 8372
+
+  Fe_aps:
+    label: "Fe APS"
+    compounds: 
+      Fe_foil: 
+        elements: ["Fe"]
+        structure: "bcc"
+        lattice_const: 2.866
+    data:
+      source_file: "../data/Fe_metal_rt_01.xdi"
+      energy_column: "energy eV"
+      mu_expression: "-log(itrans/i0)"
+      mu_ref_expression: "-log(itrans/i0)"
+
+    normalization:
+      pre1: -150
+      pre2: -40
+      norm1: 200
+      norm2: 700
+      nnorm: 2
+      nvict: 0
+      flatten: true
+
+    energy:
+      edge: 7112
+      min: 7105
+      max: 7165
+
+  Pd_bioxas:
+    label: "Pd BIOXAS"
+    compounds: 
+      Pd_foil: 
+        elements: ["Pd"]
+        structure: "fcc"
+        lattice_const: 3.890
+    data:
+      source_file: "../data/Pd_foil_bioxas.xdi"
+      energy_column: "Energy"
+      mu_expression: "-log(Itrans/I0)"
+      mu_ref_expression: "-log(Itrans/I0)"
+
+    normalization:
+      pre1: -170
+      pre2: -90
+      norm1: 250
+      norm2: 600
+      nnorm: 2
+      nvict: 0
+      flatten: true
+
+    energy:
+      edge: 24350
+      min: 24340
+      max: 24420
