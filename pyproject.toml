@@ -3,7 +3,7 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-packages = ["bayesian_opt_xas"]  
+packages = ["boxas"]  
 package-dir = {"" = "src"}
 
 # Optional: include non-code files
@@ -14,7 +14,7 @@ package-dir = {"" = "src"}
 xasproc = { git = "https://github.com/ITCP-AKG/xasproc.git" }
 
 [project]
-name = "bayesian-opt-xas"
+name = "boxas"
 version = "0.1.0"
 description = "Study of Bayesian optimization of XAS simulation"
 readme = "README.md"
